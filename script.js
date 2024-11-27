@@ -1,5 +1,5 @@
 //your JS code here. If required.
-document.getElementById("ageForm").addEventListner("submit",function(event){
+document.getElementById("ageForm").addEventListener("submit",function(event){
 
 	 event.preventDefault();
 
@@ -12,13 +12,13 @@ let name  = document.getElementById("name").value.trim();
 	}
 
 	const ageNumber = parseInt(age);
-	let promise = new Promise(resolve,reject){
+	let promise = new Promise((resolve,reject){
 
 		setTimeout(() =>{
 			if(ageNumber>18){
-				resolve(`welcome ${name} . You can vote`)
+				resolve(`welcome ${name} . You can vote`);
 			}else{
-				reject(`Oh sorry ${name}. You aren't old enough.`)
+				reject(`Oh sorry ${name}. You aren't old enough.`);
 			}
 		},4000);
 
