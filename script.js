@@ -12,7 +12,7 @@ let name  = document.getElementById("name").value.trim();
 	}
 
 	const ageNumber = parseInt(age);
-	let promise = new Promise((resolve,reject){
+	let promise = new Promise((resolve,reject) =>{
 
 		setTimeout(() =>{
 			if(ageNumber>18){
