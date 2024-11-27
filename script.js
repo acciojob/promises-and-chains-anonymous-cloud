@@ -1,24 +1,24 @@
 //your JS code here. If required.
-document.getElementById("ageForm").addEventListner("click",function(event){
+document.getElementById("ageForm").addEventListner("submit",function(event){
 
 	 event.preventDefault();
 
- let age = document.querySelectorById("age").value.trim;
-let name  = document.querySelectorById("name").value.trim;
+ let age = document.getElementById("age").value.trim();
+let name  = document.getElementById("name").value.trim();
 
 	if(!name|| !age ){
-		alert(""name and age cant be empty")
+		alert("name and age cant be empty")
 			return;
 	}
 
-	const ageNumber>18 = parseInt(age);
-	let promise = new promise(resolve,reject){
+	const ageNumber = parseInt(age);
+	let promise = new Promise(resolve,reject){
 
-		setTimeOut(() =>{
+		setTimeout(() =>{
 			if(ageNumber>18){
-				alert(`welcome ${name} . You can vote`)
+				resolve(`welcome ${name} . You can vote`)
 			}else{
-				alert(`Oh sorry ${name}. You aren't old enough.`)
+				reject(`Oh sorry ${name}. You aren't old enough.`)
 			}
 		},4000);
 
