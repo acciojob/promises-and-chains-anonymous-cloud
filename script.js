@@ -1,29 +1,38 @@
-//your JS code here. If required.
-document.getElementById("ageForm").addEventListener("submit",function(event){
+document.getElementById("ageForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent form submission from reloading the page
 
-	 event.preventDefault();
+    // Retrieve inputs
+    const name = document.getElementById("name").value.trim();
+    const age = document.getElementById("age").value;
 
- let age = document.getElementById("age").value.trim();
-let name  = document.getElementById("name").value.trim();
+    // Validation: Check for empty fields
+    if (!name || !age) {
+        alert("Name and age cannot be empty.");
+        return;
+    }
 
-	if(!name|| !age ){
-		alert("name and age cant be empty")
-			return;
-	}
+    // Convert age to a number
+    const ageNumber = parseInt(age);
 
-	const ageNumber = parseInt(age);
-	let promise = new Promise((resolve,reject) =>{
+    // Validate age input
+    if (isNaN(ageNumber)) {
+        alert("Age must be a valid number.");
+        return;
+    }
 
-		setTimeout(() =>{
-			if(ageNumber>18){
-				resolve(`welcome ${name} . You can vote`);
-			}else{
-				reject(`Oh sorry ${name}. You aren't old enough.`);
-			}
-		},4000);
+    // Create a promise for age validation
+    const promise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (ageNumber > 18) {
+                resolve(`Welcome, ${name}. You can vote.`);
+            } else {
+                reject(`Oh sorry, ${name}. You aren't old enough.`);
+            }
+        }, 4000);
+    });
 
-});
-promise
- .then(message => alert(message))
+    // Handle the promise
+    promise
+        .then(message => alert(message))
         .catch(errorMessage => alert(errorMessage));
-
+});
